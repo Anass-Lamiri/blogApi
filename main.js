@@ -1,23 +1,36 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import { setupCounter } from './counter.js'
+import { api } from './api.js'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
 
-setupCounter(document.querySelector('#counter'))
+async function createPosts() {
+	let posts = await api();
+	let range = document.getElementById('range')
+	let submit = document.getElementById('submit')
+
+	posts.length = range.value
+	
+	posts.forEach((post, index) => {
+		let mainDiv = document.createElement('div')
+		mainDiv.className = 'blog_post'
+		
+		let h2 = document.createElement('h2')
+		let h2Text = document.createTextNode(post.title)
+		h2.className = 'title'
+		h2.appendChild(h2Text)
+		
+		let p = document.createElement('p')
+		let pText = document.createTextNode(post.body)
+		p.className = 'text'
+		p.appendChild(pText)
+	
+		mainDiv.appendChild(h2)
+		mainDiv.appendChild(p)
+	
+		document.getElementById('app').appendChild(mainDiv)
+	});
+
+}
+
+createPosts() 
+
+
