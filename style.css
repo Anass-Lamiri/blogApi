@@ -40,8 +40,13 @@
   color: #d2d0d0;
 }
 
-
-
+.input_field {
+	margin-top: 10px;
+}
+.input_field .range_text {
+	display: inline;
+	padding-left: 10px;
+}
 
 
 
