@@ -9,9 +9,18 @@
 
 <body>
 	<div id="app">
-		<div class="input_field">
-			<input type="number" id="range" min="2" max="100" placeholder="number">
-			<p class="range_text"></p>
+		<div class="header">
+			<div class="input_field">
+				<input type="number" id="range" min="2" max="100" placeholder="number">
+				<p class="range_text"></p>
+			</div>
+			<div class="new_post">
+				<button type="submit" class="create_post">Create</button>
+				<input type="text" id="post_title" class="disabled" placeholder="Blog Title">
+				<input type="text" id="user_id" class="disabled" placeholder="Author Id">
+				<textarea name="textarea" class="disabled" placeholder="type your text here" id="post_text" cols="30" rows="10"></textarea>
+				<input type="button" id="post_text-btn" class="disabled" value="submit">
+			</div>
 		</div>
 		<div class="con"></div>
 	</div>

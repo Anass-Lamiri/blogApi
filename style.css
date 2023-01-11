@@ -49,9 +49,39 @@
 }
 
 
+.header {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
 
 
+.new_post {
+  display: flex;
+  flex-direction: column;
+}
 
+.new_post .create_post {
+  background-color: #fff;
+  border: none;
+  border-radius: 3px;
+  width: 80px;
+  height: 30px;
+  color: black;
+  cursor: pointer;
+
+  margin-bottom: 10px;
+}
+.new_post .create_post:hover {
+  background-color: #29b0ef;
+  color: white;
+}
+
+
+.disabled {
+  display: none;
+}
 
 
 

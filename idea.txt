@@ -1,1 +1,15 @@
 in this app i will create a page like a blog that have data from an external api
+------ features ------ 
+-(#1) selecting how many blog post you want to see. (DONE)
+- ability to create a new blog post
+- ability to update a blog post
+- ability to Delete a blog post
+- ability to search for a blog post
+- ability to filter by author of the post 
+
+todo tomorow :
+i need to change (#1) cuz it overide the created posts i create, so I'm thinking
+of making a new project that have all the features above with a real api,
+but before that I need to complete this project, what remained is:
+    - displaying comment of posts 
+        hint: rounting with comment
