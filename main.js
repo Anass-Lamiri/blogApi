@@ -36,7 +36,7 @@ createPosts()
 
 function createUi(post) {
 	let mainDiv = document.createElement('div')
-	mainDiv.className = 'blog_post'
+	mainDiv.className = `blog_post`
 	
 	let h2 = document.createElement('h2')
 	let h2Text = document.createTextNode(`${post.title + " " + post.id}`)
@@ -74,19 +74,29 @@ post_text_btn.onclick = () => {
 		title: post_title.value,
 		body: post_text.value,
 	}
-	fetch('https://jsonplaceholder.typicode.com/posts', {
-		method: 'POST',
-		body: JSON.stringify(new_post),
-		headers: {
-			'Content-type': 'application/json; charset=UTF-8',
-		},
-	}).then((response) => response.json())
-	.then((json) => createUi(json))
-
+	createNewPost(new_post)
 }
 
 
+function createNewPost(post) {
+	let mainDiv = document.createElement('div')
+	mainDiv.className = `blog_post`
+	
+	let h2 = document.createElement('h2')
+	let h2Text = document.createTextNode(`${post.title + " " + post.id}`)
+	h2.className = 'title'
+	h2.appendChild(h2Text)
+	
+	let p = document.createElement('p')
+	let pText = document.createTextNode(post.body)
+	p.className = 'text'
+	p.appendChild(pText)
 
+	mainDiv.appendChild(h2)
+	mainDiv.appendChild(p)
+
+	document.querySelector(".con").prepend(mainDiv)
+}
 
 
 
