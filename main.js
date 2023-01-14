@@ -2,9 +2,9 @@ import './style.css'
 import { api } from './api.js'
 
 
+let con = document.querySelector('.con')
 async function createPosts() {
 	let range = document.getElementById('range')
-	let con = document.querySelector('.con')
 	let range_text = document.querySelector('.range_text')
 	
 	onload = async () => {
@@ -16,7 +16,7 @@ async function createPosts() {
 			createUi(post)
 		});
 	}
-	range.onchange = async () => {
+	range.addEventListener('input', async () => {
 		let posts = await api();
 		
 		range_text.innerHTML = `you're seeing now ${range.value} posts`
@@ -28,7 +28,7 @@ async function createPosts() {
 		posts.forEach((post) => {
 			createUi(post)
 		});
-	}
+	})
 }
 
 createPosts() 
@@ -61,20 +61,46 @@ let user_id = document.getElementById('user_id')
 let post_text = document.getElementById('post_text')
 let post_text_btn = document.getElementById('post_text-btn')
 
+let popUp = document.querySelector('.popUp')
+
 create_post.onclick = () => {
-	post_title.classList.toggle("disabled");
-	user_id.classList.toggle("disabled");
-	post_text.classList.toggle("disabled");
-	post_text_btn.classList.toggle("disabled");	
+	let wrong = document.querySelector('.wrong');
+	if (create_post.innerHTML === 'Create') {
+		create_post.innerHTML = 'Close'
+	}else {
+		create_post.innerHTML = 'Create'
+	}
+	popUp.classList.toggle("disabled");	
+	con.classList.toggle('blur')
+	wrong.innerHTML = ''
+
+	// post_text_btn.onclick = () => {
+	// 	create_post.innerHTML = 'Create'
+	// 	popUp.classList.toggle("disabled");	
+	// 	con.classList.toggle('blur')
+	// }
 }
 
 post_text_btn.onclick = () => {
-	let new_post = {
-		id: user_id.value,
-		title: post_title.value,
-		body: post_text.value,
+	if (post_title.value === '' || user_id.value === '' || post_text.value === '') {
+		let wrong = document.querySelector('.wrong');
+		wrong.innerHTML = 'please fill all fields';
+	}else {
+		let new_post = {
+			id: user_id.value,
+			title: post_title.value,
+			body: post_text.value,
+		}
+		createNewPost(new_post)
+	
+		create_post.innerHTML = 'Create'
+		popUp.classList.toggle("disabled");	
+		con.classList.toggle('blur')
+	
+		post_title.value = '';
+		user_id.value = '';
+		post_text.value = '';
 	}
-	createNewPost(new_post)
 }
 
 

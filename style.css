@@ -22,6 +22,7 @@
 }
 
 #app {
+  position: relative;
   width: 90%;
   margin: auto;
 }
@@ -50,6 +51,9 @@
 
 
 .header {
+  position: sticky;
+  top: 8px;
+  background-color: #242424;
   padding-top: 10px;
   display: flex;
   justify-content: space-between;
@@ -80,13 +84,38 @@
 
 
 .disabled {
-  display: none;
+  display: none !important;
 }
-
+.blur{
+  filter: blur(8px);
+}
 .hide {
   display: none;
 }
 
+.popUp {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+  width: 100%;
+  margin-top: 25px;
+  justify-content: center;
+}
+.popUp #post_title, .popUp #user_id, .popUp #post_text {
+  width: 50%;
+  padding: 10px;
+  margin-top: 5px;
+}
+.popUp #post_text-btn {
+  width: 50%;
+  padding: 8px;
+  margin-top: 5px;
+}
 
-
-
+.wrong {
+  font-size: 14px;
+  color: #ff1e1e;
+  margin-top: 5px;
+}
